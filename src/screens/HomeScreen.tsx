@@ -1,8 +1,26 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+  Image,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { CustomButton } from "@/components/CustomButton";
 
+type RootStackParamList = {
+  Home: undefined;
+  Settings: undefined;
+};
+
+type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
+
 const HomeScreen: React.FC = () => {
+  const navigation = useNavigation<HomeScreenNavigationProp>();
+
   const handleCrisisMode = () => {
     console.log("Mode crise activé");
   };
@@ -11,8 +29,26 @@ const HomeScreen: React.FC = () => {
     console.log("Exercice de respiration");
   };
 
+  const handleSettingsPress = () => {
+    navigation.navigate("Settings");
+  };
+
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <View style={styles.spacer} />
+        <TouchableOpacity
+          style={styles.settingsButton}
+          onPress={handleSettingsPress}
+        >
+          <Image
+            source={require("../../assets/settings.png")}
+            width={24}
+            height={32}
+          />
+        </TouchableOpacity>
+      </View>
+
       <View style={styles.content}>
         <Text style={styles.title}>Sereinus</Text>
         <Text style={styles.subtitle}>Votre compagnon bien-être</Text>
@@ -45,6 +81,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#f8f9fa",
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 20,
+    paddingTop: 10,
+    paddingBottom: 10,
+  },
+  spacer: {
+    flex: 1,
+  },
+  settingsButton: {
+    padding: 8,
   },
   content: {
     flex: 1,
