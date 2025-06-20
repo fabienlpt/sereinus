@@ -1,21 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
-import { CustomButton } from "@/components/CustomButton";
+import { Header } from "@/components/Header";
 
 const SettingsScreen: React.FC = () => {
-  const handleCrisisMode = () => {
-    console.log("Mode crise activé");
-  };
-
-  const handleBreathing = () => {
-    console.log("Exercice de respiration");
-  };
-
   return (
     <SafeAreaView style={styles.container}>
+      <Header title="Paramètres" />
+
       <View style={styles.content}>
-        <Text style={styles.title}>Sereinus</Text>
-        <Text style={styles.subtitle}>Settings</Text>
+        <Text style={styles.text}>Écran des paramètres</Text>
       </View>
     </SafeAreaView>
   );
@@ -32,31 +25,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "#2c3e50",
-    marginBottom: 8,
-  },
-  subtitle: {
+  text: {
     fontSize: 18,
-    color: "#7f8c8d",
-    marginBottom: 40,
-    textAlign: "center",
-  },
-  section: {
-    marginBottom: 40,
-  },
-  moodText: {
-    fontSize: 16,
     color: "#2c3e50",
-    textAlign: "center",
-  },
-  buttonContainer: {
-    width: "100%",
-  },
-  button: {
-    marginBottom: 16,
   },
 });
 
