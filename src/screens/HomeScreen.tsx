@@ -10,11 +10,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { CustomButton } from "@/components/CustomButton";
-
-type RootStackParamList = {
-  Home: undefined;
-  Settings: undefined;
-};
+import { RootStackParamList } from "@/types/navigation";
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
 
