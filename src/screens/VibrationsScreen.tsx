@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
-import { View, StyleSheet, PanResponder, Dimensions } from "react-native";
+import { View, StyleSheet, PanResponder, Dimensions, SafeAreaView } from "react-native";
 import * as Haptics from "expo-haptics";
+import { Header } from "@/components/Header";
 
 const { height: SCREEN_HEIGHT, width: SCREEN_WIDTH } = Dimensions.get("window");
 
@@ -79,6 +80,9 @@ const VibrationsScreen: React.FC = () => {
 
   return (
     <View style={styles.container} {...panResponder.panHandlers}>
+    <SafeAreaView style={styles.container}>
+      <Header title="Vibrations" />
+    </SafeAreaView>
       {touchPosition && (
         <View
           pointerEvents="none"
