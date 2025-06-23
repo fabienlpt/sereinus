@@ -60,13 +60,21 @@ const HomeScreen: React.FC = () => {
 
         <View style={styles.buttonContainer}>
           <CustomButton
-            title="🚨 Mode Crise"
+            title="Urgence "
+            icon={require("../../assets/emergency.png")}
+            onPress={handleCrisisMode}
+            style={[styles.button, { backgroundColor: "#D9534F" }]}
+          />
+          <CustomButton
+            title="Respiration"
+            icon={require("../../assets/haleine.png")}
             onPress={handleCrisisMode}
             style={styles.button}
           />
 
           <CustomButton
-            title="🫁 Respiration"
+            title="Ancrage sensoriel"
+            icon={require("../../assets/ancre.png")}
             onPress={handleBreathing}
             style={styles.button}
           />
@@ -77,7 +85,8 @@ const HomeScreen: React.FC = () => {
           />
 
           <CustomButton
-            title="Exercices"
+            title="Vibration"
+            icon={require("../../assets/vibrate.png")}
             onPress={() => console.log("Exercices")}
             style={styles.button}
           />
