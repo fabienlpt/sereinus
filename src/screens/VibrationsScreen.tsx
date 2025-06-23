@@ -34,7 +34,7 @@ const VibrationsScreen: React.FC = () => {
     const loop = () => {
       const intensity = getIntensity(currentY);
       vibrate(intensity);
-      setTimeout(() => vibrate(intensity), 50); // Double vibration
+      setTimeout(() => vibrate(intensity), 50);
 
       const delay = getDelayFromPosition(currentY);
       timeoutRef.current = setTimeout(loop, delay);

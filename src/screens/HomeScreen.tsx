@@ -79,15 +79,9 @@ const HomeScreen: React.FC = () => {
             style={styles.button}
           />
           <CustomButton
-            title="🫁 Vibration"
-            onPress={handleVibrations}
-            style={styles.button}
-          />
-
-          <CustomButton
-            title="Vibration"
+            title="Vibrations"
             icon={require("../../assets/vibrate.png")}
-            onPress={() => console.log("Exercices")}
+            onPress={handleVibrations}
             style={styles.button}
           />
         </View>
