@@ -14,6 +14,7 @@ import { CustomButton } from "@/components/CustomButton";
 type RootStackParamList = {
   Home: undefined;
   Settings: undefined;
+  Vibrations: undefined;
 };
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
@@ -32,6 +33,10 @@ const HomeScreen: React.FC = () => {
   const handleSettingsPress = () => {
     navigation.navigate("Settings");
   };
+
+  const handleVibrations= () => {
+    navigation.navigate("Vibrations")
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -63,6 +68,11 @@ const HomeScreen: React.FC = () => {
           <CustomButton
             title="🫁 Respiration"
             onPress={handleBreathing}
+            style={styles.button}
+          />
+          <CustomButton
+            title="🫁 Vibration"
+            onPress={handleVibrations}
             style={styles.button}
           />
 
