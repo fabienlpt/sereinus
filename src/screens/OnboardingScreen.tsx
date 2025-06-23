@@ -10,6 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { RootStackParamList } from "@/types/navigation";
+import MascotSpeech from "@/components/MascotSpeech";
 
 type OnboardingScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 
@@ -29,7 +30,7 @@ const OnboardingScreen: React.FC = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.title}>Bienvenue sur Sereinus</Text>
+        <MascotSpeech title="Bienvenue sur Sereinus" isBig={true} />
         <Text style={styles.subtitle}>Votre compagnon bien-être personnel</Text>
       </View>
 
@@ -53,24 +54,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#f8f9fa",
   },
-  skipText: {
-    fontSize: 16,
-    color: "#7f8c8d",
-    fontWeight: "500",
-  },
   content: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
   },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "#2c3e50",
-    textAlign: "center",
-    marginBottom: 16,
-  },
+
   subtitle: {
     fontSize: 18,
     color: "#7f8c8d",
@@ -102,6 +92,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 16,
     paddingHorizontal: 20,
+  },
+  skipText: {
+    fontSize: 16,
+    color: "#2A4B7C",
+    fontWeight: "700",
   },
 });
 
