@@ -53,8 +53,7 @@ const HomeScreen: React.FC = () => {
       <View style={styles.content}>
         <MascotSpeech title="Bienvenue sur Sereinus" isBig={false} />
         <Text style={styles.subtitle}>
-          Vous n'êtes pas seul. Nous sommes là pour vous aider à surmonter cette
-          épreuve.
+          Votre allié silencieux contre l’angoisse.
         </Text>
 
         <View style={styles.buttonContainer}>
