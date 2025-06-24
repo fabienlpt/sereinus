@@ -119,12 +119,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 20,
   },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "#2c3e50",
-    marginBottom: 8,
-  },
   subtitle: {
     fontSize: 18,
     color: "#7f8c8d",
