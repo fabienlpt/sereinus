@@ -15,6 +15,7 @@ type RootStackParamList = {
   Home: undefined;
   Settings: undefined;
   Vibrations: undefined;
+  Breathe: undefined;
 };
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
@@ -27,16 +28,16 @@ const HomeScreen: React.FC = () => {
   };
 
   const handleBreathing = () => {
-    console.log("Exercice de respiration");
+    navigation.navigate("Breathe");
   };
 
   const handleSettingsPress = () => {
     navigation.navigate("Settings");
   };
 
-  const handleVibrations= () => {
-    navigation.navigate("Vibrations")
-  }
+  const handleVibrations = () => {
+    navigation.navigate("Vibrations");
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -68,7 +69,7 @@ const HomeScreen: React.FC = () => {
           <CustomButton
             title="Respiration"
             icon={require("../../assets/haleine.png")}
-            onPress={handleCrisisMode}
+            onPress={handleBreathing}
             style={styles.button}
           />
 
