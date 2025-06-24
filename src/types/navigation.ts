@@ -5,4 +5,5 @@ export type RootStackParamList = {
   RespirationExercise: undefined;
   SensoryAnchoringExercise: undefined;
   Vibrations: undefined;
+  Breathe: undefined;
 };

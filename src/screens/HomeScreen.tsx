@@ -22,7 +22,7 @@ const HomeScreen: React.FC = () => {
   };
 
   const handleBreathing = () => {
-    console.log("Exercice de respiration");
+    navigation.navigate("Breathe");
   };
 
   const handleSettingsPress = () => {
@@ -63,7 +63,7 @@ const HomeScreen: React.FC = () => {
           <CustomButton
             title="Respiration"
             icon={require("../../assets/haleine.png")}
-            onPress={handleCrisisMode}
+            onPress={handleBreathing}
             style={styles.button}
           />
 

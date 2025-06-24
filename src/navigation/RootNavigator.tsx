@@ -5,6 +5,8 @@ import OnboardingScreen from "@/screens/OnboardingScreen";
 import HomeScreen from "@/screens/HomeScreen";
 import SettingsScreen from "@/screens/SettingsScreen";
 import { RootStackParamList } from "@/types/navigation";
+import VibrationsScreen from "@/screens/VibrationsScreen";
+import BreatheScreen from "@/screens/BreatheScreen";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -45,6 +47,7 @@ export function RootNavigator() {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Settings" component={SettingsScreen} />
       <Stack.Screen name="Vibrations" component={VibrationsScreen} />
+      <Stack.Screen name="Breathe" component={BreatheScreen} />
     </Stack.Navigator>
   );
 }
