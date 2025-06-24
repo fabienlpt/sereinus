@@ -10,12 +10,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { CustomButton } from "@/components/CustomButton";
-
-type RootStackParamList = {
-  Home: undefined;
-  Settings: undefined;
-  Vibrations: undefined;
-};
+import { RootStackParamList } from "@/types/navigation";
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
 
@@ -34,9 +29,9 @@ const HomeScreen: React.FC = () => {
     navigation.navigate("Settings");
   };
 
-  const handleVibrations= () => {
-    navigation.navigate("Vibrations")
-  }
+  const handleVibrations = () => {
+    navigation.navigate("Vibrations");
+  };
 
   return (
     <SafeAreaView style={styles.container}>
