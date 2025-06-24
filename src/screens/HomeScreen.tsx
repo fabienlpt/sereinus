@@ -29,6 +29,10 @@ const HomeScreen: React.FC = () => {
     navigation.navigate("Settings");
   };
 
+  const handleVibrations = () => {
+    navigation.navigate("Vibrations");
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -69,11 +73,10 @@ const HomeScreen: React.FC = () => {
             onPress={handleBreathing}
             style={styles.button}
           />
-
           <CustomButton
-            title="Vibration"
+            title="Vibrations"
             icon={require("../../assets/vibrate.png")}
-            onPress={() => console.log("Exercices")}
+            onPress={handleVibrations}
             style={styles.button}
           />
         </View>

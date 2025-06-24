@@ -44,6 +44,7 @@ export function RootNavigator() {
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Settings" component={SettingsScreen} />
+      <Stack.Screen name="Vibrations" component={VibrationsScreen} />
     </Stack.Navigator>
   );
 }
