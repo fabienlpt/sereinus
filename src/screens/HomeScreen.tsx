@@ -33,6 +33,9 @@ const HomeScreen: React.FC = () => {
   const handleVibrations = () => {
     navigation.navigate("Vibrations");
   };
+  const handleAncrage = () => {
+    navigation.navigate("Ancrage");
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -73,7 +76,7 @@ const HomeScreen: React.FC = () => {
           <CustomButton
             title="Ancrage sensoriel"
             icon={require("../../assets/ancre.png")}
-            onPress={handleBreathing}
+            onPress={handleAncrage}
             style={styles.button}
           />
           <CustomButton
