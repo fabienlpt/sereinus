@@ -11,11 +11,20 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { RootStackParamList } from "@/types/navigation";
 import MascotSpeech from "@/components/MascotSpeech";
+import CustomToggle from "@/components/CustomToggle";
+import VibrationIntensity from "@/components/VibrationIntensity";
+import { useSettings } from "@/hooks/useSettings";
 
 type OnboardingScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 
 const OnboardingScreen: React.FC = () => {
   const navigation = useNavigation<OnboardingScreenNavigationProp>();
+  const {
+    settings,
+    updateNotifications,
+    updateVibrations,
+    updateVibrationIntensity,
+  } = useSettings();
 
   const handleFinishOnboarding = async () => {
     try {
@@ -31,7 +40,32 @@ const OnboardingScreen: React.FC = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <MascotSpeech title="Bienvenue sur Sereinus" isBig={true} />
-        <Text style={styles.subtitle}>Votre compagnon bien-être personnel</Text>
+        <Text style={styles.subtitle}>
+          Nous sommes là pour vous aider à surmonter toute crise, petite ou
+          grande.
+        </Text>
+        <CustomToggle
+          title="Notifications"
+          description="Activez les notifications pour tirer le meilleur parti de Sereinus"
+          onToggle={updateNotifications}
+          value={settings.notificationsEnabled}
+          style={styles.toggleContainer}
+        />
+        <CustomToggle
+          title="Vibrations"
+          description="Activer les vibrations pour une sécurité accrue"
+          onToggle={updateVibrations}
+          value={settings.vibrationsEnabled}
+          style={styles.toggleContainer}
+        />
+        <VibrationIntensity
+          value={settings.vibrationIntensity}
+          onValueChange={updateVibrationIntensity}
+          style={[
+            styles.vibrationContainer,
+            { opacity: settings.vibrationsEnabled ? 1 : 0 },
+          ]}
+        />
       </View>
 
       <View style={styles.footer}>
@@ -59,11 +93,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
+    gap: 20,
   },
-
   subtitle: {
     fontSize: 18,
-    color: "#7f8c8d",
+    color: "#2A4B7C",
     textAlign: "center",
     lineHeight: 24,
   },
@@ -97,6 +131,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#2A4B7C",
     fontWeight: "700",
+  },
+  toggleContainer: {
+    width: "100%",
+  },
+  vibrationContainer: {
+    width: "100%",
   },
 });
 
