@@ -202,7 +202,7 @@ const AncrageScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header title="Ancrage" />
+      <Header title="Ancrage sensoriel" />
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {!isStarted ? (
           renderIntroduction()
