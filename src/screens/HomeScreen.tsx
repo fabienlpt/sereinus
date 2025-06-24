@@ -11,6 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { CustomButton } from "@/components/CustomButton";
 import { RootStackParamList } from "@/types/navigation";
+import MascotSpeech from "@/components/MascotSpeech";
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
 
@@ -50,8 +51,11 @@ const HomeScreen: React.FC = () => {
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.title}>Sereinus</Text>
-        <Text style={styles.subtitle}>Votre compagnon bien-être</Text>
+        <MascotSpeech title="Bienvenue sur Sereinus" isBig={false} />
+        <Text style={styles.subtitle}>
+          Vous n'êtes pas seul. Nous sommes là pour vous aider à surmonter cette
+          épreuve.
+        </Text>
 
         <View style={styles.buttonContainer}>
           <CustomButton
@@ -80,6 +84,10 @@ const HomeScreen: React.FC = () => {
             style={styles.button}
           />
         </View>
+        <Text style={styles.subtitle}>
+          En cas d'urgence, appelez le 15 ou rendez-vous à l'hôpital le plus
+          proche.
+        </Text>
       </View>
     </SafeAreaView>
   );
@@ -109,6 +117,7 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: "center",
     alignItems: "center",
+    gap: 20,
   },
   title: {
     fontSize: 32,
