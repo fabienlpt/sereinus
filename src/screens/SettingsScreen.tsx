@@ -1,14 +1,47 @@
 import React from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { View, StyleSheet, SafeAreaView } from "react-native";
 import { Header } from "@/components/Header";
+import CustomToggle from "@/components/CustomToggle";
+import VibrationIntensity from "@/components/VibrationIntensity";
+import MascotSpeech from "@/components/MascotSpeech";
+import { useSettings } from "@/hooks/useSettings";
 
 const SettingsScreen: React.FC = () => {
+  const {
+    settings,
+    updateNotifications,
+    updateVibrations,
+    updateVibrationIntensity,
+  } = useSettings();
+
   return (
     <SafeAreaView style={styles.container}>
       <Header title="Paramètres" />
 
       <View style={styles.content}>
-        <Text style={styles.text}>Écran des paramètres</Text>
+        <MascotSpeech title="Personnalisez votre expérience" isBig={false} />
+        <CustomToggle
+          title="Notifications"
+          description="Activez les notifications pour tirer le meilleur parti de Sereinus"
+          onToggle={updateNotifications}
+          value={settings.notificationsEnabled}
+          style={styles.toggleContainer}
+        />
+        <CustomToggle
+          title="Vibrations"
+          description="Activer les vibrations pour une sécurité accrue"
+          onToggle={updateVibrations}
+          value={settings.vibrationsEnabled}
+          style={styles.toggleContainer}
+        />
+        <VibrationIntensity
+          value={settings.vibrationIntensity}
+          onValueChange={updateVibrationIntensity}
+          style={[
+            styles.vibrationContainer,
+            { opacity: settings.vibrationsEnabled ? 1 : 0 },
+          ]}
+        />
       </View>
     </SafeAreaView>
   );
@@ -21,13 +54,15 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    padding: 20,
-    justifyContent: "center",
     alignItems: "center",
+    paddingHorizontal: 20,
+    gap: 20,
   },
-  text: {
-    fontSize: 18,
-    color: "#2c3e50",
+  toggleContainer: {
+    width: "100%",
+  },
+  vibrationContainer: {
+    width: "100%",
   },
 });
 
