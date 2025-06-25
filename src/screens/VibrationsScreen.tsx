@@ -1,13 +1,26 @@
 import React, { useRef, useState } from "react";
-import { View, StyleSheet, PanResponder, Dimensions, SafeAreaView } from "react-native";
+import {
+  View,
+  StyleSheet,
+  PanResponder,
+  Dimensions,
+  SafeAreaView,
+  Animated,
+} from "react-native";
 import * as Haptics from "expo-haptics";
 import { Header } from "@/components/Header";
+import { LinearGradient } from "expo-linear-gradient";
+import MascotSpeech from "@/components/MascotSpeech";
 
 const { height: SCREEN_HEIGHT, width: SCREEN_WIDTH } = Dimensions.get("window");
 
 const VibrationsScreen: React.FC = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const [touchPosition, setTouchPosition] = useState<{ x: number; y: number } | null>(null);
+  const [touchPosition, setTouchPosition] = useState<{
+    x: number;
+    y: number;
+  } | null>(null);
+  const pulseAnim = useRef(new Animated.Value(0)).current;
 
   const getIntensity = (posY: number) => {
     const ratio = 1 - Math.min(Math.max(posY / SCREEN_HEIGHT, 0), 1);
@@ -24,8 +37,23 @@ const VibrationsScreen: React.FC = () => {
   };
 
   const vibrate = (intensity: string) => {
-    if (intensity === "Heavy") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
-    else if (intensity === "Medium") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    Animated.sequence([
+      Animated.timing(pulseAnim, {
+        toValue: 1,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(pulseAnim, {
+        toValue: 0,
+        duration: 150,
+        useNativeDriver: true,
+      }),
+    ]).start();
+
+    if (intensity === "Heavy")
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+    else if (intensity === "Medium")
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     else Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
   };
 
@@ -79,41 +107,73 @@ const VibrationsScreen: React.FC = () => {
   ).current;
 
   return (
-    <View style={styles.container} {...panResponder.panHandlers}>
-    <SafeAreaView style={styles.container}>
-      <Header title="Vibrations" />
-    </SafeAreaView>
+    <LinearGradient
+      colors={["#F5F5F5", "#8FBAA3", "#2A4B7C"]}
+      style={styles.container}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      {...panResponder.panHandlers}
+    >
+      <SafeAreaView style={styles.container}>
+        <Header title="Vibrations" />
+        <View style={styles.content}>
+          <MascotSpeech
+            title="Placez votre doigt sur l'écran pour démarrer"
+            isBig={false}
+          />
+        </View>
+      </SafeAreaView>
       {touchPosition && (
-        <View
+        <Animated.View
           pointerEvents="none"
           style={[
             styles.halo,
             {
-              top: touchPosition.y - 60,
-              left: touchPosition.x - 60,
+              top: touchPosition.y - 50,
+              left: touchPosition.x - 50,
+              transform: [
+                {
+                  scale: pulseAnim.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [
+                      1,
+                      getIntensity(touchPosition.y) === "Heavy"
+                        ? 1.4
+                        : getIntensity(touchPosition.y) === "Medium"
+                        ? 1.3
+                        : 1.2,
+                    ],
+                  }),
+                },
+              ],
             },
           ]}
         />
       )}
-    </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f8f9fa",
+  },
+  content: {
+    flex: 1,
+    alignItems: "center",
+    paddingHorizontal: 20,
   },
   halo: {
     position: "absolute",
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    backgroundColor: "rgba(42, 75, 124, 0.3)",
-    shadowColor: "#2A4B7C",
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.7,
-    shadowRadius: 20,
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    borderWidth: 5,
+    borderColor: "rgba(255, 255, 255, 0.9)",
   },
 });
 
