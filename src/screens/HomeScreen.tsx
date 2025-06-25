@@ -18,10 +18,6 @@ type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
 const HomeScreen: React.FC = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
 
-  const handleCrisisMode = () => {
-    console.log("Mode crise activé");
-  };
-
   const handleBreathing = () => {
     navigation.navigate("Breathe");
   };
@@ -60,12 +56,6 @@ const HomeScreen: React.FC = () => {
         </Text>
 
         <View style={styles.buttonContainer}>
-          <CustomButton
-            title="Urgence "
-            icon={require("../../assets/emergency.png")}
-            onPress={handleCrisisMode}
-            style={[styles.button, { backgroundColor: "#D9534F" }]}
-          />
           <CustomButton
             title="Respiration"
             icon={require("../../assets/haleine.png")}
