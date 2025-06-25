@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 10,
     paddingBottom: 10,
-    backgroundColor: "#f8f9fa",
   },
   leftSection: {
     width: 40,
