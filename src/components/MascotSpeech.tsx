@@ -1,5 +1,6 @@
 import React from "react";
-import { Text, StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
+import { Text } from "./CustomText";
 
 interface MascotSpeechProps {
   title: string;
@@ -12,7 +13,9 @@ export const MascotSpeech: React.FC<MascotSpeechProps> = ({
 }) => {
   return (
     <View style={[styles.base]}>
-      <Text style={styles.text}>{title}</Text>
+      <Text weight="bold" style={styles.text}>
+        {title}
+      </Text>
       <Image source={require("../../assets/trait.png")} style={styles.trait} />
       {isBig ? (
         <Image
@@ -36,7 +39,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 28,
-    fontWeight: "bold",
     color: "#2A4B7C",
     textAlign: "center",
     marginBottom: 12,

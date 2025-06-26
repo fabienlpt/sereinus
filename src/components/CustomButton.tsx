@@ -1,7 +1,6 @@
 import React from "react";
 import {
   TouchableOpacity,
-  Text,
   Image,
   ActivityIndicator,
   StyleSheet,
@@ -9,6 +8,7 @@ import {
   ViewStyle,
   ImageSourcePropType,
 } from "react-native";
+import { Text } from "./CustomText";
 
 interface CustomButtonProps {
   title: string;
@@ -18,7 +18,6 @@ interface CustomButtonProps {
   icon?: ImageSourcePropType | React.ReactNode;
   iconPosition?: "left" | "right";
   style?: ViewStyle | ViewStyle[];
-
 }
 
 export const CustomButton: React.FC<CustomButtonProps> = ({
@@ -57,7 +56,9 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
       ) : (
         <View style={styles.content}>
           {iconPosition === "left" && renderIcon()}
-          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.title} weight="bold">
+            {title}
+          </Text>
           {iconPosition === "right" && renderIcon()}
         </View>
       )}
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
   content: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8, 
+    gap: 8,
   },
   icon: {
     width: 20,

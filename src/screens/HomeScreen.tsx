@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   SafeAreaView,
   TouchableOpacity,
@@ -12,6 +11,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { CustomButton } from "@/components/CustomButton";
 import { RootStackParamList } from "@/types/navigation";
 import MascotSpeech from "@/components/MascotSpeech";
+import { Text } from "@/components/CustomText";
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
 

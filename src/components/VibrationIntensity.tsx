@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet, ViewStyle } from "react-native";
+import { View, StyleSheet, ViewStyle } from "react-native";
 import Slider from "@react-native-community/slider";
+import { Text } from "./CustomText";
 
 interface VibrationIntensityProps {
   value: number;

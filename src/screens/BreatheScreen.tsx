@@ -2,8 +2,9 @@ import CustomButton from "@/components/CustomButton";
 import { Header } from "@/components/Header";
 import MascotSpeech from "@/components/MascotSpeech";
 import React, { useEffect, useRef, useState } from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 import Svg, { Circle } from "react-native-svg";
+import { Text } from "@/components/CustomText";
 
 type BreathingPhase = "inhale" | "hold" | "exhale" | "pause";
 

@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  TouchableOpacity,
-} from "react-native";
+import { View, StyleSheet, SafeAreaView, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -14,6 +8,7 @@ import MascotSpeech from "@/components/MascotSpeech";
 import CustomToggle from "@/components/CustomToggle";
 import VibrationIntensity from "@/components/VibrationIntensity";
 import { useSettings } from "@/hooks/useSettings";
+import { Text } from "@/components/CustomText";
 
 type OnboardingScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 

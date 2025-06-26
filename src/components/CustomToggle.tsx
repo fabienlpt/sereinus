@@ -1,12 +1,12 @@
 import React from "react";
 import {
   TouchableOpacity,
-  Text,
   StyleSheet,
   View,
   ViewStyle,
   Switch,
 } from "react-native";
+import { Text } from "./CustomText";
 
 interface CustomToggleProps {
   title: string;
