@@ -40,10 +40,10 @@ const OnboardingScreen: React.FC = () => {
           grande.
         </Text>
         <CustomToggle
-          title="Bloquer les notifications"
-          description="Bloquer les notifications externes de l’application"
+          title="Notifications"
+          description="Activer les notifications de l’application "
           onToggle={updateNotifications}
-          value={settings.notificationsBlocked}
+          value={settings.notificationsEnabled}
           style={styles.toggleContainer}
         />
         <CustomToggle

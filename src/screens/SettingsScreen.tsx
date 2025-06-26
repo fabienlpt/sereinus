@@ -21,10 +21,10 @@ const SettingsScreen: React.FC = () => {
       <View style={styles.content}>
         <MascotSpeech title="Personnalisez votre expérience" isBig={false} />
         <CustomToggle
-          title="Bloquer les notifications"
-          description="Bloquer les notifications externes de l’application"
+          title="Notifications"
+          description="Activer les notifications de l’application "
           onToggle={updateNotifications}
-          value={settings.notificationsBlocked}
+          value={settings.notificationsEnabled}
           style={styles.toggleContainer}
         />
         <CustomToggle
