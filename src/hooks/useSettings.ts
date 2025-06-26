@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface Settings {
-  notificationsEnabled: boolean;
+  notificationsBlocked: boolean;
   vibrationsEnabled: boolean;
   vibrationIntensity: number;
 }
 
 const DEFAULT_SETTINGS: Settings = {
-  notificationsEnabled: false,
+  notificationsBlocked: true,
   vibrationsEnabled: false,
   vibrationIntensity: 0.5,
 };
@@ -45,8 +45,8 @@ export const useSettings = () => {
     }
   };
 
-  const updateNotifications = (enabled: boolean) => {
-    saveSettings({ notificationsEnabled: enabled });
+  const updateNotifications = (blocked: boolean) => {
+    saveSettings({ notificationsBlocked: blocked });
   };
 
   const updateVibrations = (enabled: boolean) => {

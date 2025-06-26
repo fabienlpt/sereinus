@@ -45,10 +45,10 @@ const OnboardingScreen: React.FC = () => {
           grande.
         </Text>
         <CustomToggle
-          title="Notifications"
-          description="Activez les notifications pour tirer le meilleur parti de Sereinus"
+          title="Bloquer les notifications"
+          description="Bloquer les notifications externes de l’application"
           onToggle={updateNotifications}
-          value={settings.notificationsEnabled}
+          value={settings.notificationsBlocked}
           style={styles.toggleContainer}
         />
         <CustomToggle
